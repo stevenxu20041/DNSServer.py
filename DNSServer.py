@@ -5,6 +5,7 @@ import dns.rdtypes
 import dns.rdtypes.ANY
 from dns.rdtypes.ANY.MX import MX
 from dns.rdtypes.ANY.SOA import SOA
+from dns.rdtypes.ANY.TXT import TXT
 import dns.rdata
 import socket
 import threading
@@ -118,6 +119,10 @@ def run_dns_server():
                 elif qtype == dns.rdatatype.SOA:
                     mname, rname, serial, refresh, retry, expire, minimum = answer_data
                     rdata = SOA(dns.rdataclass.IN, dns.rdatatype.SOA, mname, rname, serial, refresh, retry, expire, minimum)
+                    rdata_list.append(rdata)
+                elif qtype == dns.rdatatype.TXT:
+                    strings = [d.encode('utf-8') for d in answer_data]
+                    rdata = TXT(dns.rdataclass.IN, dns.rdatatype.TXT, strings)
                     rdata_list.append(rdata)
                 else:
                     if isinstance(answer_data, str):
