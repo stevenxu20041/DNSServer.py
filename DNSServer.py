@@ -43,7 +43,7 @@ def decrypt_with_aes(encrypted_data, password, salt):
     return decrypted_data.decode('utf-8')
 
 salt = b'Tandon'[cite: 3, 4]
-password = 'sx2219@nyu.edu'[cite: 3, 4]
+password = 'n12398925@nyu.edu'[cite: 3, 4]
 input_string = "Always Watching"[cite: 3, 4]
 
 encrypted_value = encrypt_with_aes(input_string, password, salt)[cite: 4]
